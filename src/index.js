@@ -3,6 +3,25 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+function asyncGetCountNum(type) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      let amount = 10
+      switch (type) {
+        case 'one':
+          amount
+          break
+        case 'two':
+          amount = amount * 2
+          break
+        default:
+          amount = amount * 100
+      }
+      resolve({amount})
+    }, 2000)
+  })
+}
+
 const store = new Vuex.Store({
   // ステート(初期値)
   state: {
@@ -16,18 +35,29 @@ const store = new Vuex.Store({
   },
   // ミューテーション
   mutations: {
-    increment (state) {
-      state.count = state.count + 1
+    increment(state, payload) {
+      state.count += payload.amount
     }
   },
   // アクション
   actions: {
-    incrementAction (ctx) {
-      ctx.commit('increment') // incrementミューテーションの実行
+    incrementAsync({commit}, payload) {
+      return asyncGetCountNum(payload.type)
+        .then(data => {
+          console.log(data);
+          
+          commit('increment', {
+            amount: data.amount
+          })
+        })
     }
+    // incrementAction (ctx) {
+    //   ctx.commit('increment') // incrementミューテーションの実行
+    // }
   }
 })
 
-console.log(store.state.count)
-store.dispatch('incrementAction')
-console.log(store.state.count)
+console.log(store.state.count);
+store.dispatch('incrementAsync', { type: 'two' }).then(() => {
+  console.log(store.state.count);
+})
