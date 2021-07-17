@@ -16,12 +16,18 @@ const store = new Vuex.Store({
   },
   // ミューテーション
   mutations: {
-    increment (state, payload) {
-      state.count = state.count + payload.amount
+    increment (state) {
+      state.count = state.count + 1
+    }
+  },
+  // アクション
+  actions: {
+    incrementAction (ctx) {
+      ctx.commit('increment') // incrementミューテーションの実行
     }
   }
 })
 
 console.log(store.state.count)
-store.commit('increment', { amount: 250 }) // 第二引数でpayloadに渡す
+store.dispatch('incrementAction')
 console.log(store.state.count)
