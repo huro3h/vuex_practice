@@ -3,7 +3,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const store = new Vuex.store({
+// Vuex.Store ← should use 'upper case'
+// https://www.programmersought.com/article/11172251988/
+const store = new Vuex.Store({
   // ステート
   state: {
     count: 10
