@@ -1,1 +1,8 @@
-console.log("Hello World!");
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex);
+
+const store = new Vuex.store({
+  // some condition..
+})
