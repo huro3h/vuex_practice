@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const store = new Vuex.store({
-  // some condition..
+  // ステート
+  state: {
+    count: 10
+  }
 })
+
+console.log(store.state.count);
