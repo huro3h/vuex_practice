@@ -4,9 +4,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  // ステート
+  // ステート(初期値)
   state: {
     count: 10
+  },
+  // ゲッター
+  getters: {
+    double: (state) => state.count * 2,
+    triple: (state) => state.count * 3,
+    multiple: (state, getters) => getters.double * getters.triple
   },
   // ミューテーション
   mutations: {
@@ -16,8 +22,6 @@ const store = new Vuex.Store({
   }
 })
 
-console.log(store.state.count);
-
-store.commit('increment', 45)
-
-console.log(store.state.count);
+console.log(store.getters.double);
+console.log(store.getters.triple);
+console.log(store.getters.multiple);
