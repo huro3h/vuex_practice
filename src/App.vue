@@ -9,7 +9,7 @@
       </li>
     </ul>
 
-    <form v-on:submit="toggleTaskStatus(task)">
+    <form v-on:submit.prevent="addTask">
       <input type="text" v-model="newTaskName" placeholder="新しいタスク名">
     </form>
   </div>
@@ -28,9 +28,7 @@ export default {
     },
   },
   methods: {
-    // タスクを追加する
     addTask () {
-      // addTaskミューテーションをコミット
       this.$store.commit('addTask', {
         name: this.newTaskName,
       })
