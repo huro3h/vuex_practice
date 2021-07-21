@@ -39,12 +39,14 @@ const store = new Vuex.Store({
     nextTaskId: 4,
     nextLabelId: 5,
   },
-
+  
   mutations: {
-    addTask(state, {name}) {
+    // タスクを追加する
+    addTask(state, { name, labelIds }) {
       state.tasks.push({
         id: state.nextTaskId,
         name,
+        labelIds,
         done: false
       })
       
@@ -52,7 +54,7 @@ const store = new Vuex.Store({
     },
     
     // タスクの完了状態を変更する
-    toggleTaskStatus(state, {id}) {
+    toggleTaskStatus(state, { id }) {
       const filterd = state.tasks.filter(task => {
         return task.id === id
       })
@@ -60,6 +62,17 @@ const store = new Vuex.Store({
       filterd.forEach(task => {
         task.done = !task.done // ここで値を反転
       })
+    },
+    
+    // ラベルを追加する
+    addLabel(state, { text }) {
+      state.labels.push({
+        id: state.nextLabelId,
+        text
+      })
+      
+      // 次に追加されるラベルに付与するIDを更新する
+      state.nextLabelId++
     },
   },
 })
