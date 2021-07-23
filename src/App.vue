@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     tasks() {
-      return this.$store.state.tasks
+      return this.$store.getters.filteredTasks
     },
     labels() {
       return this.$store.state.labels
