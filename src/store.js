@@ -38,6 +38,24 @@ const store = new Vuex.Store({
     
     nextTaskId: 4,
     nextLabelId: 5,
+    
+    // フィルターするラベルのID
+    filter: null
+  },
+  
+  getters: {
+    // フィルタ後のタスクを返す
+    filteredTasks(state) {
+      // ラベルが選択されていなければそのままの一覧を返す
+      if (!stete.filter) {
+        return state.tasks
+      }
+      
+      // 選択されているラベルでフィルタリング
+      return state.tasks.filter(task => {
+        return task.labelIds.indexOf(state.filter) >= 0
+      })
+    }
   },
   
   mutations: {
@@ -73,6 +91,11 @@ const store = new Vuex.Store({
       
       // 次に追加されるラベルに付与するIDを更新する
       state.nextLabelId++
+    },
+    
+    // フィルタリング対象のラベルを変更する
+    changeFilter(state, { filter }) {
+      state.filter = filter
     },
   },
 })

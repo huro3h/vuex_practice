@@ -81,7 +81,7 @@ export default {
       this.newLabelText = ''
     },
 
-    // ラベルのIDから、そのラベルのてきすとを返す
+    // ラベルのIDから、そのラベルのテキストを返す
     getLabelText(id) {
       const label = this.labels.filter(label => label.id === id)[0]
       return label ? label.text : ''
