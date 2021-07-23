@@ -47,7 +47,7 @@ const store = new Vuex.Store({
     // フィルタ後のタスクを返す
     filteredTasks(state) {
       // ラベルが選択されていなければそのままの一覧を返す
-      if (!stete.filter) {
+      if (!state.filter) {
         return state.tasks
       }
       
@@ -94,7 +94,7 @@ const store = new Vuex.Store({
     },
     
     // フィルタリング対象のラベルを変更する
-    changeFilter(state, { filter }) {
+    changeFilter (state, { filter }) {
       state.filter = filter
     },
   },
