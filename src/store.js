@@ -8,24 +8,9 @@ const store = new Vuex.Store({
   state: {
     // タスクの初期ステート
     tasks: [
-      {
-        id: 1,
-        name: '食う',
-        labelIds: [1, 2],
-        done: true
-      },
-      {
-        id: 2,
-        name: '寝る',
-        labelIds: [3],
-        done: false
-      },
-      {
-        id: 3,
-        name: 'あそぶ',
-        labelIds: [3, 4],
-        done: false
-      },
+      { id: 1, name: '食う', labelIds: [1, 2], done: true },
+      { id: 2, name: '寝る', labelIds: [3], done: false },
+      { id: 3, name: 'あそぶ', labelIds: [3, 4], done: false },
     ],
     
     // ラベルの初期ステート
