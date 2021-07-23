@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       // 入力中の新しいタスク名を一時的に保持する
       newTaskName: '',
@@ -45,16 +45,16 @@ export default {
     }
   },
   computed: {
-    tasks () {
+    tasks() {
       return this.$store.state.tasks
     },
-    labels () {
+    labels() {
       return this.$store.state.labels
     }
   },
 
   methods: {
-    addTask () {
+    addTask() {
       // addTask ミューテーションをコミット
       this.$store.commit('addTask', {
         name: this.newTaskName,
@@ -65,7 +65,7 @@ export default {
     },
 
     // タスクの完了状態を更新する
-    toggleTaskStatus (task) {
+    toggleTaskStatus(task) {
       // toggleTaskStatusミューテーションをコミット
       this.$store.commit('toggleTaskStatus', {
         id: task.id
@@ -73,7 +73,7 @@ export default {
     },
 
     // ラベルを追加する
-    addLabel () {
+    addLabel() {
       // addLabel ミューテーションををコミット
       this.$store.commit('addLabel', {
         text: this.newLabelText
@@ -82,7 +82,7 @@ export default {
     },
 
     // ラベルのIDから、そのラベルのてきすとを返す
-    getLabelText (id) {
+    getLabelText(id) {
       const label = this.labels.filter(label => label.id === id)[0]
       return label ? label.text : ''
     },
@@ -91,3 +91,9 @@ export default {
 
 // memo: next labels filtering..
 </script>
+
+<style>
+body {
+  background-color: lightsteelblue;
+}
+</style>
