@@ -101,7 +101,7 @@ const store = new Vuex.Store({
         nextTaskId: state.nextTaskId,
         nextLabelId: state.nextLabelId
       }
-      localStorage.setItem('task-app-data', JSON.stringfy(data))
+      localStorage.setItem('task-app-data', JSON.stringify(data))
     },
     
     restore({ commit }) {

@@ -75,6 +75,20 @@
         フィルタしない
       </li>
     </ul>
+    
+    <h4>保存と復元</h4>
+    <button
+      type="button"
+      @click="save"
+    >
+      保存
+    </button>
+    <button
+      type="button"
+      @click="restore"
+    >
+      復元
+    </button>
   </div>
 </template>
 
@@ -144,6 +158,17 @@ export default {
       this.$store.commit('changeFilter', {
         filter: labelId
       })
+    },
+    
+    // 現在の状態を保存する
+    save() {
+      // saveアクションをコミット
+      this.$store.dispatch('save')
+    },
+    
+    restore(){
+      // restoreアクションをコミット
+      this.$store.dispatch('restore')
     }
   }
 }
