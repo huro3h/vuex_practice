@@ -2,44 +2,79 @@
   <div id="app">
     <h4>タスク一覧</h4>
     <ul>
-      <li v-for="task in tasks" v-bind:key="task.id">
-        <input type="checkbox" v-bind:checked="task.done" v-on:change="toggleTaskStatus(task)">
+      <li
+        v-for="task in tasks"
+        :key="task.id"
+      >
+        <input
+          type="checkbox"
+          :checked="task.done"
+          @change="toggleTaskStatus(task)"
+        >
         {{ task.name }}
         -
-        <span v-for="id in task.labelIds" v-bind:key="id">
+        <span
+          v-for="id in task.labelIds"
+          :key="id"
+        >
           {{ getLabelText(id) }}
         </span>
       </li>
     </ul>
     
-    <form v-on:submit.prevent="addTask">
-      <input type="text" v-model="newTaskName" placeholder="新しいタスク名">
+    <form @submit.prevent="addTask">
+      <input
+        type="text"
+        v-model="newTaskName"
+        placeholder="新しいタスク名"
+      >
     </form>
     
     <h3>ラベル一覧</h3>
     <ul>
-      <li v-for="label in labels" v-bind:key="label.id">
-        <input type="checkbox" v-bind:value="label.id" v-model="newTaskLabelIds">
+      <li
+        v-for="label in labels"
+        :key="label.id"
+      >
+        <input
+          type="checkbox"
+          :value="label.id"
+          v-model="newTaskLabelIds"
+        >
         {{ label.text }}
       </li>
     </ul>
     
-    <form v-on:submit.prevent="addLabel">
-      <input type="text" v-model="newLabelText" placeholder="新しいラベル名を入れてね">
+    <form @submit.prevent="addLabel">
+      <input
+        type="text"
+        v-model="newLabelText"
+        placeholder="新しいラベル名を入れてね"
+      >
     </form>
     
     <h4>ラベルでフィルタ</h4>
     <ul>
-      <li v-for="label in labels" v-bind:key="label.id">
-        <input type="radio" v-bind:checked="label.id === filter" v-on:change="changeFilter(label.id)">
+      <li
+        v-for="label in labels"
+        :key="label.id"
+      >
+        <input
+          type="radio"
+          :checked="label.id === filter"
+          @change="changeFilter(label.id)"
+        >
         {{ label.text }}
       </li>
       <li>
-        <input type="radio" v-bind:checked="filter == null" v-on:change="changeFilter(null)">
+        <input
+          type="radio"
+          :checked="filter == null"
+          @change="changeFilter(null)"
+        >
         フィルタしない
       </li>
     </ul>
-    
   </div>
 </template>
 
